@@ -50,9 +50,9 @@ int getComputerMove(const vector<char>& board) {
     return move;
 }
 void playGame() {
-    vector<char> board(9, ' '); // Initialize board
-    bool userTurn = true; // User starts first
-    srand(time(0)); // Seed for random number generation
+    vector<char> board(9, ' '); 
+    bool userTurn = true; 
+    srand(time(0)); 
 
     while (!isGameOver(board)) {
         printBoard(board);
@@ -63,8 +63,8 @@ void playGame() {
             move = getComputerMove(board);
         }
         board[move] = userTurn ? 'X' : 'O'; // Mark the move on the board
-        userTurn = !userTurn; // Switch turns
-        cout << endl; // New line after each move
+        userTurn = !userTurn; 
+        cout << endl; 
     }
 
     printBoard(board);
