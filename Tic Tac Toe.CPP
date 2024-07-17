@@ -4,8 +4,6 @@
 #include <ctime>
 
 using namespace std;
-
-// Function to print the Tic Tac Toe board
 void printBoard(const vector<char>& board) {
     cout << " " << board[0] << " | " << board[1] << " | " << board[2] << endl;
     cout << "-----------" << endl;
@@ -14,44 +12,36 @@ void printBoard(const vector<char>& board) {
     cout << " " << board[6] << " | " << board[7] << " | " << board[8] << endl;
 }
 
-// Function to check if the game is over
 bool isGameOver(const vector<char>& board) {
-    // Check rows
     for (int i = 0; i < 3; ++i) {
         if (board[i] != ' ' && board[i] == board[i + 3] && board[i] == board[i + 6])
             return true;
     }
-    // Check columns
     for (int i = 0; i < 9; i += 3) {
         if (board[i] != ' ' && board[i] == board[i + 1] && board[i] == board[i + 2])
             return true;
     }
-    // Check diagonals
     if (board[0] != ' ' && board[0] == board[4] && board[0] == board[8])
         return true;
     if (board[2] != ' ' && board[2] == board[4] && board[2] == board[6])
         return true;
 
-    // Check for tie
     for (int i = 0; i < 9; ++i) {
         if (board[i] == ' ')
             return false;
     }
-    return true; // All cells filled, no winner
+    return true; 
 }
 
-// Function to get a valid move from the user
 int getUserMove(const vector<char>& board) {
     int move;
     do {
         cout << "Enter your move (1-9): ";
         cin >> move;
-        move--; // Adjusting for zero-based indexing
+        move--; 
     } while (move < 0 || move >= 9 || board[move] != ' ');
     return move;
 }
-
-// Function to get computer's move (simple random move)
 int getComputerMove(const vector<char>& board) {
     int move;
     do {
@@ -59,8 +49,6 @@ int getComputerMove(const vector<char>& board) {
     } while (board[move] != ' ');
     return move;
 }
-
-// Function to perform the game
 void playGame() {
     vector<char> board(9, ' '); // Initialize board
     bool userTurn = true; // User starts first
@@ -79,10 +67,8 @@ void playGame() {
         cout << endl; // New line after each move
     }
 
-    // Game over, print final board
     printBoard(board);
 
-    // Print result
     if (isGameOver(board)) {
         cout << "Game Over!" << endl;
         if (userTurn)
