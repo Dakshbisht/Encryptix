@@ -62,7 +62,7 @@ void playGame() {
         } else {
             move = getComputerMove(board);
         }
-        board[move] = userTurn ? 'X' : 'O'; // Mark the move on the board
+        board[move] = userTurn ? 'X' : 'O'; 
         userTurn = !userTurn; 
         cout << endl; 
     }
